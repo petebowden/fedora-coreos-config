@@ -16,8 +16,7 @@ packages:
   # the archive repo for more reliable package layering
   # https://github.com/coreos/fedora-coreos-tracker/issues/400
   - fedora-repos-archive
-  # CL ships this.
-  - moby-engine
+  
   # User metrics
   - fedora-coreos-pinger
   # Updates

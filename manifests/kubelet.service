@@ -1,0 +1,27 @@
+[Unit]
+Description=Kubernetes Kubelet Server
+Documentation=https://kubernetes.io/docs/concepts/overview/components/#kubelet https://kubernetes.io/docs/reference/generated/kubelet/
+After=crio.service
+Requires=crio.service
+
+[Service]
+WorkingDirectory=/var/lib/kubelet
+EnvironmentFile=-/etc/kubernetes/config
+EnvironmentFile=-/etc/kubernetes/kubelet
+ExecStart=/usr/bin/kubelet \
+            --config=/etc/kubernetes/kubelet.conf \
+            --cgroup-driver=systemd \
+            --fail-swap-on=false \
+            --container-runtime=remote \
+            --container-runtime-endpoint=unix:///var/run/crio/crio.sock \
+            --runtime-cgroups=/system.slice/crio.service \
+            --runtime-request-timeout=10m \
+            --address=127.0.0.1 \
+            --hostname-override=127.0.0.1 \
+            --logtostderr=true 
+
+Restart=on-failure
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
