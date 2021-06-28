@@ -25,7 +25,7 @@ postprocess:
       mode: AlwaysAllow
     EOF
   
-
+    mkdir -p /var/lib/kubelet/manifests
 
     rm /etc/cni/net.d/*
 
