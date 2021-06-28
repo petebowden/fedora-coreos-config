@@ -14,7 +14,7 @@ postprocess:
     apiVersion: kubelet.config.k8s.io/v1beta1
     cgroupDriver: systemd
     cgroupRoot: /
-    staticPodPath: /etc/kubernetes/manifests
+    staticPodPath: /var/lib/kubelet/manifests/
     systemCgroups: /system.slice
     authentication:
       anonymous:
